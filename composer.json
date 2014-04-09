@@ -1,31 +1,34 @@
 {
-  "name": "bravo3/network-proxy",
-  "type": "library",
-  "description": "A set of PHP 5.3 interfaces that define a network proxy",
-  "keywords": ["proxy", "network"],
-  "license": "MIT",
-  "authors": [
-    {
-      "name": "Jordon Scott",
-      "email": "jordon@novatek.com.au"
-    }
-  ],
-  "autoload": {
-    "psr-0": { "": "src/" }
-  },
-  "require": {
-    "php": ">=5.3.3"
-  },
-  "require-dev": {
-    "phpunit/phpunit": ">=4.0.0"
-  },
-  "scripts": {
-    "post-install-cmd": [
+    "name": "bravo3/network-proxy",
+    "type": "library",
+    "description": "A set of PHP 5.3 interfaces that define a network proxy",
+    "keywords": ["proxy", "network"],
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Jordon Scott",
+            "email": "jordon@novatek.com.au"
+        }
     ],
-    "post-update-cmd": [
-    ]
-  },
-  "config": {
-    "bin-dir": "bin"
-  }
+    "autoload": {
+        "psr-0": {
+            "": "src/"
+        }
+    },
+    "require": {
+        "php": ">=5.3.3",
+        "eloquent/enumeration": "~5.1"
+    },
+    "require-dev": {
+        "phpunit/phpunit": ">=4.0.0"
+    },
+    "scripts": {
+        "post-install-cmd": [
+        ],
+        "post-update-cmd": [
+        ]
+    },
+    "config": {
+        "bin-dir": "bin"
+    }
 }

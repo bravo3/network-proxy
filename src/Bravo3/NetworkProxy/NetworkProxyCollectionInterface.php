@@ -1,6 +1,7 @@
 <?php
 namespace Bravo3\NetworkProxy;
 
+use Bravo3\NetworkProxy\Enum\ProxyScheme;
 use Bravo3\NetworkProxy\Implementation\FtpProxy;
 use Bravo3\NetworkProxy\Implementation\HttpProxy;
 use Bravo3\NetworkProxy\Implementation\SocksProxy;
@@ -14,10 +15,10 @@ interface NetworkProxyCollectionInterface
     /**
      * Get the most appropriate proxy for the protocol
      *
-     * @param string $protocol
+     * @param ProxyScheme $protocol
      * @return NetworkProxyInterface|null
      */
-    public function getProxy($protocol);
+    public function getProxy(ProxyScheme $protocol);
 
 
     /**

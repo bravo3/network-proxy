@@ -1,6 +1,7 @@
 <?php
 namespace Bravo3\Tests\NetworkProxy;
 
+use Bravo3\NetworkProxy\Enum\ProxyScheme;
 use Bravo3\NetworkProxy\Implementation\FtpProxy;
 use Bravo3\NetworkProxy\Implementation\HttpProxy;
 use Bravo3\NetworkProxy\Implementation\NetworkProxyCollection;
@@ -47,34 +48,30 @@ class NetworkProxyCollectionTest extends \PHPUnit_Framework_TestCase {
         $collection = new NetworkProxyCollection();
         $collection->setSocksProxy($socks_proxy);
 
-        $this->assertTrue($collection->getProxy('ftp') instanceof SocksProxy);
-        $this->assertTrue($collection->getProxy('http') instanceof SocksProxy);
-        $this->assertTrue($collection->getProxy('https') instanceof SocksProxy);
-        $this->assertTrue($collection->getProxy('tcp') instanceof SocksProxy);
+        $this->assertTrue($collection->getProxy(ProxyScheme::FTP()) instanceof SocksProxy);
+        $this->assertTrue($collection->getProxy(ProxyScheme::HTTP()) instanceof SocksProxy);
+        $this->assertTrue($collection->getProxy(ProxyScheme::HTTPS()) instanceof SocksProxy);
 
         $collection->setFtpProxy($ftp_proxy);
 
-        $this->assertTrue($collection->getProxy('ftp') instanceof FtpProxy);
-        $this->assertTrue($collection->getProxy('http') instanceof SocksProxy);
-        $this->assertTrue($collection->getProxy('https') instanceof SocksProxy);
-        $this->assertTrue($collection->getProxy('tcp') instanceof SocksProxy);
+        $this->assertTrue($collection->getProxy(ProxyScheme::FTP()) instanceof FtpProxy);
+        $this->assertTrue($collection->getProxy(ProxyScheme::HTTP()) instanceof SocksProxy);
+        $this->assertTrue($collection->getProxy(ProxyScheme::HTTPS()) instanceof SocksProxy);
 
         $collection->setHttpProxy($http_proxy);
 
-        $this->assertTrue($collection->getProxy('ftp') instanceof FtpProxy);
-        $this->assertTrue($collection->getProxy('http') instanceof HttpProxy);
-        $this->assertTrue($collection->getProxy('https') instanceof SocksProxy);
-        $this->assertTrue($collection->getProxy('tcp') instanceof SocksProxy);
+        $this->assertTrue($collection->getProxy(ProxyScheme::FTP()) instanceof FtpProxy);
+        $this->assertTrue($collection->getProxy(ProxyScheme::HTTP()) instanceof HttpProxy);
+        $this->assertTrue($collection->getProxy(ProxyScheme::HTTPS()) instanceof SocksProxy);
 
         $collection->setHttpsProxy($https_proxy);
 
-        $this->assertTrue($collection->getProxy('ftp') instanceof FtpProxy);
-        $this->assertTrue($collection->getProxy('http') instanceof HttpProxy);
-        $this->assertTrue($collection->getProxy('https') instanceof HttpProxy);
-        $this->assertTrue($collection->getProxy('tcp') instanceof SocksProxy);
+        $this->assertTrue($collection->getProxy(ProxyScheme::FTP()) instanceof FtpProxy);
+        $this->assertTrue($collection->getProxy(ProxyScheme::HTTP()) instanceof HttpProxy);
+        $this->assertTrue($collection->getProxy(ProxyScheme::HTTPS()) instanceof HttpProxy);
 
-        $this->assertEquals('http', $collection->getProxy('http')->getHostname());
-        $this->assertEquals('https', $collection->getProxy('https')->getHostname());
+        $this->assertEquals('http', $collection->getProxy(ProxyScheme::HTTP())->getHostname());
+        $this->assertEquals('https', $collection->getProxy(ProxyScheme::HTTPS())->getHostname());
 
     }
 

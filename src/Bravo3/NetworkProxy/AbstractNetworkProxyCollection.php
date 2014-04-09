@@ -10,10 +10,6 @@ use Bravo3\NetworkProxy\Implementation\SocksProxy;
  */
 abstract class AbstractNetworkProxyCollection implements NetworkProxyCollectionInterface
 {
-    const PROTOCOL_HTTP = 'http';
-    const PROTOCOL_HTTPS = 'https';
-    const PROTOCOL_FTP = 'ftp';
-
     /**
      * @var FtpProxy
      */
